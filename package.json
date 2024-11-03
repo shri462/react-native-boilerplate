@@ -5,9 +5,13 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "lint": "eslint .",
+    "lint": "eslint . --fix",
     "start": "react-native start",
-    "test": "jest"
+    "start:reset": "react-native start --reset-cache",
+    "format": "prettier --write \"app/**/*.{js,jsx,json,md,ts,tsx}\"",
+    "test": "jest",
+    "prepare": "husky",
+    "cm": "cz"
   },
   "dependencies": {
     "react": "18.3.1",
@@ -17,6 +21,8 @@
     "@babel/core": "^7.25.2",
     "@babel/preset-env": "^7.25.3",
     "@babel/runtime": "^7.25.0",
+    "@commitlint/cli": "^19.5.0",
+    "@commitlint/config-conventional": "^19.5.0",
     "@react-native-community/cli": "15.0.0",
     "@react-native-community/cli-platform-android": "15.0.0",
     "@react-native-community/cli-platform-ios": "15.0.0",
@@ -27,13 +33,39 @@
     "@types/react": "^18.2.6",
     "@types/react-test-renderer": "^18.0.0",
     "babel-jest": "^29.6.3",
+    "commitlint": "^19.5.0",
+    "cz-customizable": "^7.2.1",
     "eslint": "^8.19.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "husky": "^9.1.6",
     "jest": "^29.6.3",
-    "prettier": "2.8.8",
+    "prettier": "3.3.3",
     "react-test-renderer": "18.3.1",
     "typescript": "5.0.4"
   },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "arrowParens": "always",
+    "overrides": [
+      {
+        "files": "*.tsx",
+        "options": {
+          "parser": "typescript"
+        }
+      }
+    ]
+  },
   "engines": {
     "node": ">=18"
-  }
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-customizable"
+    }
+  },
+  "packageManager": "yarn@4.5.1"
 }
