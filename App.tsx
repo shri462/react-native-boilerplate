@@ -37,7 +37,7 @@ function Section({ children, title }: SectionProps): React.JSX.Element {
         style={[
           styles.sectionTitle,
           {
-            color: '#222',
+            color: Colors.black,
           },
         ]}
       >

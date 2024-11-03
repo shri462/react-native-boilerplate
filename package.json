@@ -64,7 +64,7 @@
   },
   "config": {
     "commitizen": {
-      "path": "cz-customizable"
+      "path": "node_modules/cz-customizable"
     }
   },
   "packageManager": "yarn@4.5.1"
