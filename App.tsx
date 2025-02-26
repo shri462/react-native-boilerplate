@@ -120,8 +120,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
   },
   sectionDescription: {
-    fontWeight: "400",
     fontSize: 18,
+    fontWeight: "400",
     marginTop: 8,
   },
   sectionTitle: {
