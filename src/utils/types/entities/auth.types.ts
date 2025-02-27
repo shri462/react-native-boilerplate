@@ -5,3 +5,8 @@ export interface IUser extends IDocument {
   firstName: string;
   lastName: string;
 }
+
+export interface ILoginRequest {
+  email: string;
+  password: string;
+}
