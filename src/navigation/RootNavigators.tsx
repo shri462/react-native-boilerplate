@@ -12,7 +12,7 @@ const RootNavigator = () => {
   const { isAuthenticated, setIsAuthenticated } = useAuthStore();
 
   useEffect(() => {
-    setIsAuthenticated(true);
+    setIsAuthenticated(false);
   }, []);
 
   return (

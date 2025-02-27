@@ -1,0 +1,12 @@
+---
+description: custom rules
+globs: 
+alwaysApply: true
+---
+
+# Your rule content
+
+- use english language
+- always use colors from [colors.ts](mdc:src/theme/colors.ts) if not present add a new color to it
+- use react version 19
+- use react native 0.78
