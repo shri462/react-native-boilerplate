@@ -38,10 +38,7 @@ module.exports = {
     "object-curly-newline": "off",
     "arrow-parens": "off",
     "implicit-arrow-linebreak": "off",
-    "no-unused-vars": [
-      "error",
-      { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
-    ],
+    "no-unused-vars": "off",
     "nonblock-statement-body-position": ["error", "any"],
     "no-underscore-dangle": "off",
     "multiline-ternary": "off",
@@ -81,8 +78,13 @@ module.exports = {
     "@typescript-eslint/no-unused-vars": [
       "error",
       {
-        argsIgnorePattern: "^_",
-        varsIgnorePattern: "^_",
+        "args": "all",
+        "argsIgnorePattern": "^_",
+        "caughtErrors": "all",
+        "caughtErrorsIgnorePattern": "^_",
+        "destructuredArrayIgnorePattern": "^_",
+        "varsIgnorePattern": "^_",
+        "ignoreRestSiblings": true,
       },
     ],
     "react-native/no-raw-text": 0,
