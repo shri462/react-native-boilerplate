@@ -1,15 +1,12 @@
-import React, { useState } from "react";
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  StyleSheet,
-  SafeAreaView,
-  StatusBar,
-} from "react-native";
+import React from "react";
+import { View, Text, StyleSheet, SafeAreaView, StatusBar } from "react-native";
 import { colors } from "../../theme/colors";
 import Button from "../../components/shared/Button";
+import { ControlledTextInput } from "../../components/shared/textinput/ControlledTextInput";
+import { FormProvider, useForm } from "react-hook-form";
+import { ControlledPasswordInput } from "../../components/shared/password-input/ControlledPasswordInput";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 interface LoginCredentials {
   email: string;
@@ -20,112 +17,56 @@ interface LoginProps {
   onLogin?: (credentials: LoginCredentials) => void;
 }
 
+const schema = yup.object({
+  email: yup.string().email("Invalid email").required("Email is required"),
+  password: yup.string().required("Password is required"),
+});
+
 const Login: React.FC<LoginProps> = ({ onLogin }) => {
-  const [credentials, setCredentials] = useState<LoginCredentials>({
-    email: "",
-    password: "",
+  const form = useForm<LoginCredentials>({
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+    resolver: yupResolver(schema),
   });
-  const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const handleLogin = (): void => {
-    onLogin?.(credentials);
+    const formData = form.getValues();
+    onLogin?.(formData);
   };
-
-  const handleInputChange =
-    (field: keyof LoginCredentials) =>
-    (value: string): void => {
-      setCredentials(prev => ({
-        ...prev,
-        [field]: value,
-      }));
-    };
 
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="dark-content" backgroundColor={colors.white} />
       <View style={{ height: StatusBar.currentHeight }} />
       <Text style={styles.title}>Login</Text>
-      <View style={styles.inputContainer}>
-        <Text style={styles.label}>
-          Email address<Text style={styles.asterisk}>*</Text>
-        </Text>
-        <TextInput
-          style={styles.input}
-          value={credentials.email}
-          onChangeText={handleInputChange("email")}
-          keyboardType="email-address"
-          autoCapitalize="none"
-          autoComplete="email"
-          textContentType="emailAddress"
-        />
-      </View>
-      <View style={styles.inputContainer}>
-        <Text style={styles.label}>
-          Password<Text style={styles.asterisk}>*</Text>
-        </Text>
-        <View style={styles.passwordContainer}>
-          <TextInput
-            style={[styles.input, styles.passwordInput]}
-            value={credentials.password}
-            onChangeText={handleInputChange("password")}
-            secureTextEntry={!showPassword}
-            autoComplete="password"
-            textContentType="password"
-          />
-          <TouchableOpacity
-            onPress={() => setShowPassword(prev => !prev)}
-            style={styles.eyeIcon}
-            activeOpacity={0.7}
-          ></TouchableOpacity>
+      <FormProvider {...form}>
+        <View style={styles.inputContainer}>
+          <ControlledTextInput name="email" label="Email" required />
         </View>
-      </View>
-      <Button
-        title="Forgot Password?"
-        onPress={handleLogin}
-        variant="transparent"
-        disabled
-      />
-      <Button title="Login" onPress={handleLogin} variant="danger" />
+        <View style={styles.inputContainer}>
+          <ControlledPasswordInput name="password" label="Password" required />
+        </View>
+        <Button
+          title="Login"
+          onPress={form.handleSubmit(handleLogin)}
+          variant="danger"
+        />
+      </FormProvider>
+
+      <Button title="Forgot Password?" variant="transparent" disabled />
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  asterisk: {
-    color: colors.danger500,
-  },
   container: {
     backgroundColor: colors.white,
     flex: 1,
     padding: 20,
   },
-  eyeIcon: {
-    position: "absolute",
-    right: 15,
-    top: "50%",
-    transform: [{ translateY: -12 }],
-  },
-  input: {
-    borderColor: colors.secondary200,
-    borderRadius: 8,
-    borderWidth: 1,
-    fontSize: 16,
-    padding: 15,
-  },
-  inputContainer: {
-    marginBottom: 20,
-    marginTop: 20,
-  },
-  label: {
-    fontSize: 16,
-    marginBottom: 8,
-  },
-  passwordContainer: {
-    position: "relative",
-  },
-  passwordInput: {
-    paddingRight: 50,
-  },
+  inputContainer: { marginVertical: 10 },
   title: {
     color: colors.secondary900,
     fontSize: 32,

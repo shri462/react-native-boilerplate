@@ -4,7 +4,7 @@ import {
   BaseToastProps,
   ErrorToast,
 } from "react-native-toast-message";
-import colors from "./colors";
+import { colors } from "../theme/colors";
 
 const toastConfig = {
   success: (props: BaseToastProps) => (
