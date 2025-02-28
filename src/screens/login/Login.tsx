@@ -9,6 +9,7 @@ import {
   StatusBar,
 } from "react-native";
 import { colors } from "../../theme/colors";
+import Button from "../../components/shared/Button";
 
 interface LoginCredentials {
   email: string;
@@ -17,10 +18,9 @@ interface LoginCredentials {
 
 interface LoginProps {
   onLogin?: (credentials: LoginCredentials) => void;
-  onForgotPassword?: () => void;
 }
 
-const Login: React.FC<LoginProps> = ({ onLogin, onForgotPassword }) => {
+const Login: React.FC<LoginProps> = ({ onLogin }) => {
   const [credentials, setCredentials] = useState<LoginCredentials>({
     email: "",
     password: "",
@@ -79,16 +79,13 @@ const Login: React.FC<LoginProps> = ({ onLogin, onForgotPassword }) => {
           ></TouchableOpacity>
         </View>
       </View>
-      <TouchableOpacity onPress={onForgotPassword}>
-        <Text style={styles.forgotPassword}>Forgot Password?</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        activeOpacity={0.7}
-        style={styles.loginButton}
+      <Button
+        title="Forgot Password?"
         onPress={handleLogin}
-      >
-        <Text style={styles.loginButtonText}>Login</Text>
-      </TouchableOpacity>
+        variant="transparent"
+        disabled
+      />
+      <Button title="Login" onPress={handleLogin} variant="danger" />
     </SafeAreaView>
   );
 };
@@ -108,12 +105,6 @@ const styles = StyleSheet.create({
     top: "50%",
     transform: [{ translateY: -12 }],
   },
-  forgotPassword: {
-    alignSelf: "flex-end",
-    color: colors.primary500,
-    marginTop: 8,
-    textDecorationLine: "underline",
-  },
   input: {
     borderColor: colors.secondary200,
     borderRadius: 8,
@@ -128,18 +119,6 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 16,
     marginBottom: 8,
-  },
-  loginButton: {
-    alignItems: "center",
-    backgroundColor: colors.primary200,
-    borderRadius: 8,
-    marginTop: 20,
-    padding: 15,
-  },
-  loginButtonText: {
-    color: colors.black,
-    fontSize: 16,
-    fontWeight: "500",
   },
   passwordContainer: {
     position: "relative",
