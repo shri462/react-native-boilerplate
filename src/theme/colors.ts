@@ -1,6 +1,7 @@
 export const colors = {
   white: "#FFFFFF",
   black: "#000000",
+  modalBackground: "#00000040",
 
   // Primary Colors
   primary50: "#EEFBFD",

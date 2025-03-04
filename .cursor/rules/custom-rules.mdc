@@ -84,6 +84,8 @@ alwaysApply: true
   4. Use react-native-permissions to handle device permissions gracefully.
   5. Ensure compatibility with iOS and Android by testing extensively on both platforms also on tablet devices.
 
+  - always add testIds for the elements.
+
   API Documentation
   - Use React Native's official documentation for setting up and configuring your projects: https://reactnative.dev/
 

@@ -7,6 +7,10 @@ import { FormProvider, useForm } from "react-hook-form";
 import { ControlledPasswordInput } from "../../components/shared/password-input/ControlledPasswordInput";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import Header from "../../components/shared/header/Header";
+import ControlledSelect from "../../components/shared/select/ControlledSelect";
+import Toast from "react-native-toast-message";
+import { HorizontalLine } from "../../components/shared/horizontal-line/HorizontalLine";
 
 interface LoginCredentials {
   email: string;
@@ -32,13 +36,17 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
   });
 
   const handleLogin = (): void => {
+    Toast.show({
+      text1: "Login successful",
+      type: "success",
+    });
     const formData = form.getValues();
     onLogin?.(formData);
   };
 
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar barStyle="dark-content" backgroundColor={colors.white} />
+      <Header title="Login" />
       <View style={{ height: StatusBar.currentHeight }} />
       <Text style={styles.title}>Login</Text>
       <FormProvider {...form}>
@@ -48,6 +56,16 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
         <View style={styles.inputContainer}>
           <ControlledPasswordInput name="password" label="Password" required />
         </View>
+
+        <ControlledSelect
+          name="role"
+          label="Role"
+          required
+          data={[
+            { label: "Admin", value: "admin" },
+            { label: "User", value: "user" },
+          ]}
+        />
         <Button
           title="Login"
           onPress={form.handleSubmit(handleLogin)}
@@ -55,7 +73,13 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
         />
       </FormProvider>
 
-      <Button title="Forgot Password?" variant="transparent" disabled />
+      <HorizontalLine marginVertical={16} />
+      <HorizontalLine
+        color={colors.primary500}
+        height={2}
+        marginVertical={16}
+        marginHorizontal={16}
+      />
     </SafeAreaView>
   );
 };
