@@ -4,17 +4,16 @@ export const colors = {
   modalBackground: "#00000040",
 
   // Primary Colors
-  primary50: "#EEFBFD",
-  primary100: "#D3F2FA",
-  primary200: "#ADE5F4",
-  primary300: "#59C9E7",
-  primary400: "#36B5DA",
-  primary500: "#1A98C0",
-  primary600: "#187AA2",
-  primary700: "#1A6384",
-  primary800: "#1E526C",
-  primary900: "#1D455C",
-  primary950: "#0E2C3E",
+  primary50: "#e5f3ff",
+  primary100: "#cde2ff",
+  primary200: "#9ac2ff",
+  primary300: "#64a0ff",
+  primary400: "#3884fe",
+  primary500: "#1d72fe",
+  primary600: "#0063ff",
+  primary700: "#0058e4",
+  primary800: "#004ecd",
+  primary900: "#0043b5",
 
   // Secondary Colors
   secondary25: "#FCFCFD",
