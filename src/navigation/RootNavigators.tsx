@@ -7,6 +7,7 @@ import screens from "./screens";
 import { useAuthStore } from "../zustand-store/zustand-store";
 import Login from "../screens/login/Login";
 const RootStack = createNativeStackNavigator<RootStackParamList>();
+import BootSplash from "react-native-bootsplash";
 
 const RootNavigator = () => {
   const { isAuthenticated, setIsAuthenticated } = useAuthStore();
@@ -16,7 +17,11 @@ const RootNavigator = () => {
   }, []);
 
   return (
-    <NavigationContainer>
+    <NavigationContainer
+      onReady={() => {
+        BootSplash.hide();
+      }}
+    >
       <RootStack.Navigator screenOptions={{ headerShown: false }}>
         {isAuthenticated ? (
           <>
