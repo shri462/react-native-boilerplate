@@ -7981,6 +7981,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"mitt@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "mitt@npm:3.0.1"
+  checksum: 10/287c70d8e73ffc25624261a4989c783768aed95ecb60900f051d180cf83e311e3e59865bfd6e9d029cdb149dc20ba2f128a805e9429c5c4ce33b1416c65bbd14
+  languageName: node
+  linkType: hard
+
 "mkdirp@npm:^0.5.1":
   version: 0.5.6
   resolution: "mkdirp@npm:0.5.6"
@@ -9037,6 +9044,44 @@ __metadata:
   languageName: node
   linkType: hard
 
+"reactotron-core-client@npm:2.9.7":
+  version: 2.9.7
+  resolution: "reactotron-core-client@npm:2.9.7"
+  dependencies:
+    reactotron-core-contract: "npm:0.2.5"
+  checksum: 10/7bd1300a5984aef22b011d61d7dd1e185574189ea517aa933d406497610f8cf9d1021b6e9be3240970761f5d796949479d18eb44de03f6b31e4d9183e3f0dcd6
+  languageName: node
+  linkType: hard
+
+"reactotron-core-contract@npm:0.2.5":
+  version: 0.2.5
+  resolution: "reactotron-core-contract@npm:0.2.5"
+  checksum: 10/6035af3c0a047e0c860477abddbd8e25869bff8ed0d4ae64994ee35cb9630ae8f1b37d3bf713316b22cd741a1897f9d75a26e8fc2d9d90a20e14710607e7d14e
+  languageName: node
+  linkType: hard
+
+"reactotron-react-native@npm:^5.1.13":
+  version: 5.1.13
+  resolution: "reactotron-react-native@npm:5.1.13"
+  dependencies:
+    mitt: "npm:^3.0.1"
+    reactotron-core-client: "npm:2.9.7"
+  peerDependencies:
+    react-native: ">=0.40.0"
+  checksum: 10/0b5e73596944cdb10c54790e58093bf93497d3271b3868f215c535678419cb762c1f7ad8027f1deab6452b0b7244662b4b611a829e78f297be2e3e0e2f2aa141
+  languageName: node
+  linkType: hard
+
+"reactotron-react-query@npm:^1.0.4":
+  version: 1.0.4
+  resolution: "reactotron-react-query@npm:1.0.4"
+  peerDependencies:
+    react-query: ^3.39.2
+    reactotron-core-client: ^2.9.3
+  checksum: 10/70faed5dab45e80d2cc71ea23d436a03e0aa82133a90c6dedd9c6f23c4b8e83541b861d69918e61010091bae5e289223c956779908083f5586cfaa20df9afa9c
+  languageName: node
+  linkType: hard
+
 "readable-stream@npm:^3.4.0":
   version: 3.6.2
   resolution: "readable-stream@npm:3.6.2"
@@ -9388,6 +9433,8 @@ __metadata:
     react-native-svg: "npm:^15.11.2"
     react-native-svg-transformer: "npm:^1.5.0"
     react-native-toast-message: "npm:^2.2.1"
+    reactotron-react-native: "npm:^5.1.13"
+    reactotron-react-query: "npm:^1.0.4"
     typescript: "npm:^5.7.3"
     yup: "npm:^1.6.1"
     zustand: "npm:^5.0.3"
